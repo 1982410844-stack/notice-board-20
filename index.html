@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatGPT 团队账号使用教程</title>
+    <meta name="description" content="加入团队后的登录、额度、验证、注意事项和商品售卖区。" />
+    <style>
+      :root {
+        --page: #0b1116;
+        --paper: rgba(16, 23, 29, 0.78);
+        --paper-strong: rgba(20, 29, 36, 0.92);
+        --ink: #edf8f5;
+        --muted: #aab8bd;
+        --line: rgba(133, 255, 216, 0.22);
+        --green: #55f2c1;
+        --green-soft: rgba(85, 242, 193, 0.14);
+        --amber: #f4c36d;
+        --amber-soft: rgba(244, 195, 109, 0.14);
+        --blue: #79a8ff;
+        --blue-soft: rgba(121, 168, 255, 0.15);
+        --coral: #ffb06b;
+        --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(115deg, rgba(38, 255, 185, 0.14), rgba(11, 17, 22, 0) 32%),
+          linear-gradient(245deg, rgba(121, 168, 255, 0.14), rgba(11, 17, 22, 0) 42%),
+          var(--page);
+        color: var(--ink);
+        font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+      }
+      body::before {
+        background:
+          repeating-linear-gradient(90deg, rgba(133, 255, 216, 0.08) 0 1px, transparent 1px 84px),
+          repeating-linear-gradient(0deg, rgba(121, 168, 255, 0.07) 0 1px, transparent 1px 84px);
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.18));
+      }
+      body::after {
+        z-index: -1;
+        background:
+          repeating-linear-gradient(135deg, transparent 0 22px, rgba(85, 242, 193, 0.07) 22px 23px, transparent 23px 58px),
+          linear-gradient(to bottom, rgba(11, 17, 22, 0.18), rgba(11, 17, 22, 0.9));
+      }
+      a { color: inherit; text-decoration: none; }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 14, 19, 0.78);
+        backdrop-filter: blur(18px);
+      }
+      .topbar,
+      main {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+      .brand {
+        color: var(--green);
+        font-size: 18px;
+        font-weight: 700;
+        text-shadow: 0 0 18px rgba(85, 242, 193, 0.35);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      nav a {
+        border: 1px solid rgba(133, 255, 216, 0.22);
+        border-radius: 8px;
+        padding: 8px 12px;
+        color: #d7e8e4;
+        font-size: 14px;
+        background: rgba(15, 23, 30, 0.72);
+      }
+      main { padding: 34px 0 64px; }
+      .hero {
+        position: relative;
+      }
+      .hero-media {
+        overflow: hidden;
+        border: 1px solid rgba(133, 255, 216, 0.24);
+        border-radius: 8px;
+        background: rgba(16, 23, 29, 0.78);
+        box-shadow: var(--shadow);
+      }
+      .hero-media img {
+        display: block;
+        width: 100%;
+        height: 290px;
+        object-fit: cover;
+      }
+      .hero-content { padding: 32px 0 8px; }
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 700;
+        text-shadow: 0 0 14px rgba(85, 242, 193, 0.28);
+      }
+      h1 {
+        margin: 0;
+        max-width: 780px;
+        font-size: 48px;
+        line-height: 1.12;
+      }
+      .intro {
+        margin: 18px 0 0;
+        max-width: 790px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.85;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+      }
+      .chip {
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      .green { background: var(--green-soft); color: var(--green); }
+      .amber { background: var(--amber-soft); color: var(--amber); }
+      .blue { background: var(--blue-soft); color: var(--blue); }
+      .section-head {
+        margin: 38px 0 16px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      h2 { margin: 0; font-size: 28px; line-height: 1.25; }
+      .updated { color: #8fa1a7; font-size: 14px; }
+      .steps {
+        display: grid;
+        gap: 14px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 68px minmax(0, 1fr);
+        gap: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 22px;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(14px);
+      }
+      .num {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-family: Consolas, monospace;
+        font-weight: 700;
+      }
+      .step h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        line-height: 1.5;
+      }
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+      .shop-panel {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        margin-top: 42px;
+        padding: 28px 0 32px;
+      }
+      .shop-copy {
+        max-width: 760px;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .product-card {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+      }
+      .product-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background: rgba(121, 168, 255, 0.12);
+        overflow: hidden;
+      }
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .product-placeholder {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        color: var(--blue);
+        font-weight: 700;
+        background:
+          linear-gradient(135deg, rgba(121, 168, 255, 0.16), rgba(85, 242, 193, 0.12)),
+          rgba(16, 23, 29, 0.82);
+      }
+      .product-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+      }
+      .product-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .badge {
+        border-radius: 8px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        padding: 6px 9px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .price {
+        color: var(--coral);
+        font-size: 20px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .product-card h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.4;
+      }
+      .product-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .features {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #c5d2d6;
+        font-size: 14px;
+      }
+      .features li {
+        min-height: 20px;
+        padding-left: 18px;
+        position: relative;
+      }
+      .features li::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        position: absolute;
+        left: 2px;
+        top: 7px;
+      }
+      .buy-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        margin-top: auto;
+        border: 0;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #2ed6a6, #6e9dff);
+        color: #071016;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(46, 214, 166, 0.22);
+      }
+      .buy-button.disabled {
+        background: rgba(143, 161, 167, 0.24);
+        color: #8fa1a7;
+        cursor: not-allowed;
+      }
+      .payment-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 22px;
+        z-index: 20;
+        width: min(460px, calc(100% - 32px));
+        transform: translate(-50%, 18px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper-strong);
+        box-shadow: var(--shadow);
+        color: var(--ink);
+        line-height: 1.65;
+        opacity: 0;
+        padding: 14px 16px;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      .payment-toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      .empty-state {
+        border: 1px dashed rgba(133, 255, 216, 0.32);
+        border-radius: 8px;
+        background: rgba(16, 23, 29, 0.64);
+        color: var(--muted);
+        padding: 22px;
+        line-height: 1.8;
+      }
+      .wechat-panel {
+        border-bottom: 1px solid var(--line);
+        padding: 30px 0 34px;
+      }
+      .wechat-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 22px;
+        align-items: center;
+      }
+      .wechat-copy {
+        color: var(--muted);
+        line-height: 1.85;
+        margin: 12px 0 0;
+        max-width: 720px;
+      }
+      .wechat-contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .wechat-id {
+        border: 1px solid rgba(133, 255, 216, 0.24);
+        border-radius: 8px;
+        background: rgba(9, 14, 19, 0.58);
+        color: var(--ink);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 0 13px;
+      }
+      .wechat-id strong {
+        color: var(--green);
+        font-family: Consolas, monospace;
+      }
+      .copy-wechat {
+        border: 0;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #2ed6a6, #6e9dff);
+        color: #071016;
+        cursor: pointer;
+        font-weight: 700;
+        min-height: 42px;
+        padding: 0 14px;
+      }
+      .wechat-offer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .offer-pill {
+        border-radius: 8px;
+        background: var(--green-soft);
+        color: var(--green);
+        font-weight: 700;
+        padding: 9px 12px;
+      }
+      .offer-pill strong {
+        color: var(--coral);
+      }
+      .wechat-qr {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26);
+      }
+      .wechat-qr img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1.18;
+        object-fit: contain;
+      }
+      .wechat-caption {
+        border-top: 1px solid var(--line);
+        color: #4d575c;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 10px 12px;
+        text-align: center;
+      }
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .service-card {
+        border: 1px solid rgba(133, 255, 216, 0.2);
+        border-radius: 8px;
+        background: rgba(16, 23, 29, 0.7);
+        min-width: 0;
+        padding: 14px;
+      }
+      .service-card strong {
+        color: var(--green);
+        display: block;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+      .service-card span {
+        color: var(--muted);
+        display: block;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+      .notice {
+        margin-top: 30px;
+        border: 1px solid rgba(133, 255, 216, 0.24);
+        border-radius: 8px;
+        background: rgba(16, 23, 29, 0.76);
+        padding: 22px;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+      }
+      .notice h2 { font-size: 22px; }
+      .notice p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      footer {
+        margin-top: 34px;
+        color: #8fa1a7;
+        font-size: 14px;
+        text-align: center;
+      }
+      @media (max-width: 900px) {
+        h1 { font-size: 40px; }
+        .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .wechat-layout { grid-template-columns: 1fr; }
+        .wechat-qr { max-width: 320px; }
+      }
+      @media (max-width: 680px) {
+        .topbar { align-items: flex-start; flex-direction: column; }
+        .hero-media img { height: 200px; }
+        .hero-content { padding-top: 24px; }
+        h1 { font-size: 34px; }
+        .intro { font-size: 16px; }
+        .section-head { align-items: flex-start; flex-direction: column; }
+        .step { grid-template-columns: 1fr; }
+        .product-grid { grid-template-columns: 1fr; }
+        .service-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="topbar">
+        <a class="brand" href="#">使用教程</a>
+        <nav aria-label="页面导航">
+          <a href="#wechat">微信售后</a>
+          <a href="#shop">商品售卖</a>
+          <a href="#guide">教程步骤</a>
+          <a href="#notice">注意事项</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-media">
+          <img src="notice-cover.png" alt="使用教程封面" />
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">ChatGPT Team / 使用说明</p>
+          <h1 id="page-title">ChatGPT 团队账号使用教程</h1>
+          <p class="intro">加入团队后，如果遇到权限、额度、登录或验证提示，可以先按下面步骤排查。多数情况是刚加入后的同步延迟，稍等后重新登录即可恢复。</p>
+          <div class="chips">
+            <span class="chip green">建议按顺序操作</span>
+            <span class="chip amber">遇到问题先重新登录</span>
+            <span class="chip blue">商品区支持付款链接</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wechat-panel" id="wechat" aria-labelledby="wechat-title">
+        <div class="wechat-layout">
+          <div>
+            <p class="eyebrow">微信售后 / 优惠下单</p>
+            <h2 id="wechat-title">加微信下单立减 10 元</h2>
+            <p class="wechat-copy">扫码添加微信，可进售后群咨询和处理售后。通过微信下单 ChatGPT Business Team，优惠后为 68.88 元一个月。</p>
+            <div class="wechat-contact">
+              <span class="wechat-id">微信号：<strong>Gan888S</strong></span>
+              <button class="copy-wechat" type="button" data-copy-wechat="Gan888S">复制微信号</button>
+            </div>
+            <div class="wechat-offer">
+              <span class="offer-pill">原价 ¥78.88</span>
+              <span class="offer-pill">微信下单 <strong>¥68.88 / 月</strong></span>
+              <span class="offer-pill">含一个月质保</span>
+            </div>
+          </div>
+          <figure class="wechat-qr">
+            <img src="wechat-service.png" alt="微信售后二维码" loading="lazy" />
+            <figcaption class="wechat-caption">扫码添加微信好友，售后咨询和优惠下单都在这里。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="shop-panel" id="shop" aria-labelledby="shop-title">
+        <div class="section-head">
+          <div>
+            <h2 id="shop-title">商品售卖区</h2>
+            <p class="shop-copy" id="shop-subtitle">这里可以展示商品、价格、图片和付款入口。配置付款链接后，访客点击按钮即可进入对应支付页面下单。</p>
+          </div>
+          <span class="updated" id="shop-count">商品加载中</span>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <div class="service-grid" aria-label="购买和售后说明">
+          <div class="service-card"><strong>付款后马上操作</strong><span>付款后会尽快处理并拉入车队。</span></div>
+          <div class="service-card"><strong>到期自动移出</strong><span>到期未续费会自动移出车队。</span></div>
+          <div class="service-card"><strong>质保一个月</strong><span>购买周期内提供一个月质保和售后群支持。</span></div>
+          <div class="service-card"><strong>封号重拉一次</strong><span>如遇封号，可提供一次重新拉车队机会。</span></div>
+        </div>
+      </section>
+
+      <section id="guide">
+        <div class="section-head">
+          <h2>教程步骤</h2>
+          <span class="updated">最后更新：2026.06.09</span>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="num">01</div>
+            <div>
+              <h3>接受邀请并加入团队</h3>
+              <p>进入自己的 ChatGPT 账号接受邀请，加入团队。加入后如果提示“此套餐不提供 ChatGPT 访问权限”，通常是刚加入存在延迟，只需要等待 5-10 分钟，退出当前账号后重新登录即可使用。如果尝试一次不行，可以多尝试几次。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="num">02</div>
+            <div>
+              <h3>额度提示已用完</h3>
+              <p>如果出现额度已用完的提示，一般也可以先退出当前账号，然后重新登录再查看是否恢复。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="num">03</div>
+            <div>
+              <h3>更换网络节点后重试</h3>
+              <p>如果以上办法仍不可行，可以更换节点后重新操作以上步骤，再确认是否恢复正常。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="num">04</div>
+            <div>
+              <h3>遇到 Codex 验证提示</h3>
+              <p>如果出现 Codex 弹窗验证，请先退出账号并重新登录几次，看是否可以正常通过。若仍无法通过，请按官方提示使用本人可接收验证码的号码完成验证，或更换合规可验证的账号。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="num">05</div>
+            <div>
+              <h3>注意账号使用环境</h3>
+              <p>近期官方风控较严格，尽量保证网络环境稳定、账号使用环境干净。若出现封号，可按规则申请重新拉新的账号；该机会仅一次，后续再次封号将不能申请重拉。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="notice" id="notice">
+        <h2>注意事项</h2>
+        <p>请优先按顺序排查，不要频繁切换设备或重复提交操作。涉及账号验证时，请遵守平台规则并使用本人可验证的信息。</p>
+      </section>
+      <footer>请以本页面最新更新时间为准。</footer>
+    </main>
+    <div class="payment-toast" id="payment-toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const grid = document.getElementById("product-grid");
+      const countLabel = document.getElementById("shop-count");
+      const subtitle = document.getElementById("shop-subtitle");
+      const paymentToast = document.getElementById("payment-toast");
+      let toastTimer;
+
+      function escapeText(value) {
+        return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#039;"
+        })[char]);
+      }
+
+      function productImage(product) {
+        if (product.image) {
+          return `<img src="${escapeText(product.image)}" alt="${escapeText(product.name)}" loading="lazy" />`;
+        }
+        const initial = escapeText((product.name || "商品").slice(0, 2));
+        return `<div class="product-placeholder">${initial}</div>`;
+      }
+
+      function paymentButton(product) {
+        if (product.paymentUrl && /^https?:\/\//i.test(product.paymentUrl)) {
+          return `<a class="buy-button" href="${escapeText(product.paymentUrl)}" target="_blank" rel="noopener">付款下单</a>`;
+        }
+        if (product.paymentUrl && !product.paymentUrl.startsWith("#")) {
+          return `<a class="buy-button" href="${escapeText(product.paymentUrl)}">付款下单</a>`;
+        }
+        if (product.paymentUrl) {
+          return `<button class="buy-button" type="button" data-payment="${escapeText(product.paymentUrl)}">付款下单</button>`;
+        }
+        return `<span class="buy-button disabled" aria-disabled="true">待配置付款</span>`;
+      }
+
+      function showPaymentMessage(text) {
+        clearTimeout(toastTimer);
+        paymentToast.innerHTML = `<strong>付款信息已复制</strong><br />${escapeText(text)}`;
+        paymentToast.classList.add("show");
+        toastTimer = setTimeout(() => paymentToast.classList.remove("show"), 5200);
+      }
+
+      function copyPaymentText(text) {
+        if (navigator.clipboard?.writeText) {
+          return navigator.clipboard.writeText(text);
+        }
+        const input = document.createElement("textarea");
+        input.value = text;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.left = "-9999px";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+        return Promise.resolve();
+      }
+
+      document.querySelectorAll("[data-copy-wechat]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const wechatId = button.getAttribute("data-copy-wechat");
+          copyPaymentText(wechatId)
+            .then(() => showPaymentMessage(`微信号已复制：${wechatId}`))
+            .catch(() => window.prompt("请复制微信号", wechatId));
+        });
+      });
+
+      function renderProducts(data) {
+        if (data.store?.subtitle) subtitle.textContent = data.store.subtitle;
+        const products = (data.products || []).filter((item) => item.visible !== false);
+        countLabel.textContent = products.length ? `${products.length} 个商品` : "等待上架";
+
+        if (!products.length) {
+          const title = data.store?.emptyTitle || "商品正在上架中";
+          const text = data.store?.emptyText || "商品信息整理完成后会显示在这里。";
+          grid.className = "";
+          grid.innerHTML = `<div class="empty-state"><strong>${escapeText(title)}</strong><br />${escapeText(text)}</div>`;
+          return;
+        }
+
+        grid.className = "product-grid";
+        grid.innerHTML = products.map((product) => {
+          const features = (product.features || []).map((item) => `<li>${escapeText(item)}</li>`).join("");
+          return `
+            <article class="product-card">
+              <div class="product-image">${productImage(product)}</div>
+              <div class="product-body">
+                <div class="product-meta">
+                  <span class="badge">${escapeText(product.badge || "在售")}</span>
+                  <span class="price">${escapeText(product.price || "价格待定")}</span>
+                </div>
+                <h3>${escapeText(product.name || "未命名商品")}</h3>
+                <p>${escapeText(product.description || "")}</p>
+                ${features ? `<ul class="features">${features}</ul>` : ""}
+                ${paymentButton(product)}
+              </div>
+            </article>
+          `;
+        }).join("");
+        grid.querySelectorAll("[data-payment]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const paymentText = button.getAttribute("data-payment");
+            copyPaymentText(paymentText)
+              .then(() => showPaymentMessage(paymentText))
+              .catch(() => {
+                window.prompt("请复制付款信息", paymentText);
+              });
+          });
+        });
+      }
+
+      fetch("products.json?v=20260609")
+        .then((response) => response.ok ? response.json() : Promise.reject(new Error("products.json")))
+        .then(renderProducts)
+        .catch(() => {
+          renderProducts({
+            store: {
+              emptyTitle: "商品正在上架中",
+              emptyText: "商品数据暂未发布。"
+            },
+            products: []
+          });
+        });
+    </script>
+  </body>
+</html>

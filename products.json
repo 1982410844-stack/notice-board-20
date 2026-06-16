@@ -18,7 +18,6 @@
         "付款后马上操作拉车队",
         "到期未续费会自动移出",
         "无质保",
-        "封号可重拉一次",
         "邮箱没问题、梯子没问题，稳定使用一个月"
       ],
       "paymentUrl": "pay.html?product=chatgpt-business-team",

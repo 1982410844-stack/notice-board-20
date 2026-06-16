@@ -11,15 +11,15 @@
       "visible": true,
       "name": "ChatGPT Business Team",
       "badge": "可购买",
-      "price": "¥78.88",
+      "price": "¥48.88",
       "image": "product-chatgpt-business-team.png",
-      "description": "一个月的车队，到期自动移出，一个月质保，有售后群。",
+      "description": "一个月的车队，到期自动移出，无质保。",
       "features": [
         "付款后马上操作拉车队",
         "到期未续费会自动移出",
-        "质保一个月",
+        "无质保",
         "封号可重拉一次",
-        "提供售后群"
+        "邮箱没问题、梯子没问题，稳定使用一个月"
       ],
       "paymentUrl": "pay.html?product=chatgpt-business-team",
       "paymentCode": "#付款:Dia大怨种版(Gan888S)/ChatGPTteam收款/001"

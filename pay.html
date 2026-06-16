@@ -240,7 +240,7 @@
           + '<div class="image-panel"><img src="' + escapeText(product.image || "notice-cover.png") + '" alt="' + escapeText(product.name) + '" /></div>'
           + '<div class="pay-panel"><p class="eyebrow">' + escapeText(product.badge || "可购买") + '</p><h1>' + escapeText(product.name || "商品") + '</h1><div class="price">' + escapeText(product.price || "价格待定") + '</div><p class="description">' + escapeText(product.description || "") + '</p>'
           + '<div class="code-box"><strong>付款信息</strong><div class="code" id="payment-code">' + escapeText(paymentCode || "付款信息待配置") + '</div></div>'
-          + '<div class="code-box"><strong>微信售后</strong><div class="code">微信号 Gan888S，付款后可添加微信进售后群。</div></div>'
+          + '<div class="code-box"><strong>微信售后</strong><div class="code">微信号 Gan888S，付款后可添加微信咨询售后。</div></div>'
           + '<div class="actions"><button type="button" id="copy-payment">复制付款信息</button><a class="button secondary" href="./#shop">继续浏览</a></div><div class="toast" id="toast">已复制付款信息。</div></div>'
           + '<div class="detail-panel"><h2>商品说明</h2>' + (features ? '<ul class="features">' + features + '</ul>' : '<p class="description">暂无更多说明。</p>') + '</div></section>';
         app.innerHTML = html;
